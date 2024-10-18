@@ -41,7 +41,7 @@ errors_b64_float64 = np.abs(derivative_b64(f64, x2, h2) - fPrim64(x2))
 #############################################
 
 plt.figure(figsize=(10, 6))
-plt.plot(h1, errors_a32_float32, label='Errors A (float32)', color='yellow')
+plt.plot(h1, errors_a32_float32, label='Errors A (float32)', color='blue')
 plt.plot(h2, errors_a64_float64, label='Errors A (float64)', color='red')
 plt.xscale('log')
 plt.yscale('log')
@@ -54,7 +54,7 @@ plt.show()
 
 plt.figure(figsize=(10, 6))
 plt.plot(h1, errors_b32_float32, label='Errors B (float32)', color='green')
-plt.plot(h2, errors_b64_float64, label='Errors B (float64)', color='blue')
+plt.plot(h2, errors_b64_float64, label='Errors B (float64)', color='orange')
 plt.xscale('log')
 plt.yscale('log')
 plt.xlabel('h')
