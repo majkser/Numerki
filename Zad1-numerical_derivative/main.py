@@ -63,3 +63,47 @@ plt.title('Errors in Numerical Derivatives (derivative_b)')
 plt.legend()
 plt.grid(True)
 plt.show()
+
+z1 = np.float32(0.5)
+z2 = np.float64(0.5)
+
+def g32(z):
+    return np.float32(3**z)
+def g64 (z):
+    return np.float64(3**z)
+
+def gPrim32(z):
+    return np.float32(np.log(3)*3**z)
+def gPrim64(z):
+    return np.float64(np.log(3)*3**z)
+
+errors_a32_float32 = np.abs(derivative_a32(g32, z1, h1) - gPrim32(z1))
+errors_a64_float64 = np.abs(derivative_a64(g64, z2, h2) - gPrim64(z2))
+
+errors_b32_float32 = np.abs(derivative_b32(g32, z1, h1) - gPrim32(z1))
+errors_b64_float64 = np.abs(derivative_b64(g64, z2, h2) - gPrim64(z2))
+
+
+plt.figure(figsize=(10, 6))
+plt.plot(h1, errors_a32_float32, label='Errors A (float32)', color='blue')
+plt.plot(h2, errors_a64_float64, label='Errors A (float64)', color='red')
+plt.xscale('log')
+plt.yscale('log')
+plt.xlabel('h')
+plt.ylabel('Error')
+plt.title('Errors in Numerical Derivatives (derivative_a)')
+plt.legend()
+plt.grid(True)
+plt.show()
+
+plt.figure(figsize=(10, 6))
+plt.plot(h1, errors_b32_float32, label='Errors B (float32)', color='green')
+plt.plot(h2, errors_b64_float64, label='Errors B (float64)', color='orange')
+plt.xscale('log')
+plt.yscale('log')
+plt.xlabel('h')
+plt.ylabel('Error')
+plt.title('Errors in Numerical Derivatives (derivative_b)')
+plt.legend()
+plt.grid(True)
+plt.show()
