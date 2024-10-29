@@ -26,6 +26,12 @@ x = np.linalg.solve(A1, B)
 
 y = np.linalg.solve(A2, B)
 
+print("wyniki rownanan A1y = B")
+print(x)
+print("wyniki rownan A2y = B")
+print(y)
+
+
 delta_B = np.random.randn(5, 1)
 norm_delta_B = np.linalg.norm(delta_B)
 delta_B = (delta_B * 1e-6) / norm_delta_B
@@ -36,5 +42,12 @@ x_2 = np.linalg.solve(A1, B_i_delta_B)
 
 y_2 = np.linalg.solve(A2, B_i_delta_B)
 
+print("wyniki rownan A1y = B + delta_B")
+print(x_2)
+print("wyniki rownan A2y = B + delta_B")
+print(y_2)
+
+print("roznica między wynikami rownan z macierzy A1")
 print(x_2 - x)
+print("roznica mieszy wynikami rownan z macierzy A2")
 print(y_2 - y)
