@@ -28,7 +28,24 @@ for i in range(N):
 detA = 1
 for i in range (N):
     detA *= U[i][0]
- 
-np.set_printoptions(precision=10, suppress=True, linewidth=150, threshold=np.inf)
-print(U)
-print(detA)
+
+#forward sbustitution
+Z = np.zeros((N , 1)) 
+for i in range(N):
+    if i == 0:
+        Z[i][0] = X[i][0]
+    else:
+        Z[i][0] = X[i][0] - L[i-1][0] * Z[i - 1][0]
+
+#back substitution
+Y = np.zeros((N, 1))
+for i in range(N - 1, -1, -1):
+    if i == (N - 1):
+        Y[i][0] = Z[i][0] / U[i][0]
+    elif i == (N - 2):
+        Y[i][0] = (Z[i][0] - U[i][1] * Y[i + 1][0]) / U[i][0]
+    else:
+        Y[i][0] = (Z[i][0] - U[i][1] * Y[i + 1][0] - U[i][2] * Y[i + 2][0]) / U[i][0]
+
+np.set_printoptions(precision=3, suppress=True, linewidth=150, threshold=np.inf)
+print(Y)
