@@ -14,7 +14,7 @@ for N in Ns:
     Z = np.zeros((N, 1))    
     Y = np.zeros((N, 1))
     
-    start_time = time.perf_counter()
+
     
     for i in range(N): 
         if i < N:
@@ -27,7 +27,9 @@ for N in Ns:
             
     for i in range(N):
         X[i][0] = i + 1
-
+        
+    start_time = time.perf_counter()
+    
     for i in range(N):
         L[i][1] = 1        
         U[i][0] = A[i][1] - L[i - 1][0] * U[i - 1][1]    
