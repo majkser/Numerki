@@ -63,7 +63,7 @@ for N in Ns:
         detA = 1
         for i in range(N):
             detA *= U[i][0] 
-        print(Y)
+        print(Y.flatten())
         print(detA)
 
 # Plotting the results
